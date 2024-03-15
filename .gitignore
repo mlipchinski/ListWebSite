@@ -1,0 +1,13 @@
+# .gitignore
+*.pyc
+*~
+__pycache__
+listvenv
+myenv
+db.sqlite3
+.DS_Store
+.idea
+*.log
+*.pot
+*.py[co]
+*.tmp

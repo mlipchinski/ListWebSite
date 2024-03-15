@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create and activate virtual environment",
+            "type": "shell",
+            "command": "python -m venv listenv && .\\listenv\\Scripts\\activate",
+            "windows": {
+                "command": "python -m venv listenv && .\\listenv\\Scripts\\activate"
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Install requirements",
+            "type": "shell",
+            "command": ".\\listenv\\Scripts\\activate && pip install -r requirements.txt",
+            "windows": {
+                "command": ".\\listenv\\Scripts\\activate && pip install -r requirements.txt"
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

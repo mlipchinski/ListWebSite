@@ -58,7 +58,7 @@ def logout_view(request):
     This view logs out the user and redirects them to the home page.
     """
     logout(request)
-    messages.success(request, "You have been logged out.")
+    messages.success(request, "You have been logged out.", extra_tags="info")
     return redirect("home")
 
 
@@ -86,10 +86,12 @@ def login_view(request):
             login(request, user)
             return redirect("home")
         else:
-            return render(
-                request, "login.html", {"error": "Invalid username or password"}
+            messages.error(
+                request, "Invalid username or password.", extra_tags="danger"
             )
-    return render(request, "login.html")  # This will handle the 'GET' request
+            return render(request, "login.html")
+    else:
+        return render(request, "login.html")
 
 
 def register(request):

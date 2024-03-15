@@ -2,16 +2,27 @@
     "version": "0.2.0",
     "configurations": [
         {
-            //Start chrome if not started with the following url http://127.0.0.1:8000/
             "name": "Run server and open browser",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/manage.py",
-            "args": [
-                "runserver",
-            ],
+            "args": ["runserver"],
             "django": true,
-            "subProcess": true,
+            "subProcess": true
+        },
+        {
+            "name": "Launch Chrome Incognito",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:8000/",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": ["--incognito"]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Run Django and Launch Chrome Incognito",
+            "configurations": ["Run server and open browser", "Launch Chrome Incognito"]
         }
     ]
 }

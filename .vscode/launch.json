@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            //Start chrome if not started with the following url http://127.0.0.1:8000/
+            "name": "Django",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver",
+            ],
+            "django": true,
+            "subProcess": true,
+        }
+    ]
+}

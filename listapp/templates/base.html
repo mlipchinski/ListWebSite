@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ListApp</title>
+    <link rel="stylesheet" href="{% static 'listapp/styles.css' %}">
+</head>
+<body>
+    {% block navbar %}
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Home</a> |
+            <a href="{% url 'user_profile' %}">Profile</a> |
+            <a href="{% url 'user_list' %}">User List</a> |
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit"
+                    style="background: none!important; border: none; padding: 0!important; font-family: arial, sans-serif; color: #069; text-decoration: underline; cursor: pointer;">Logout</button>
+            </form>
+        </nav>
+    </header>
+    {% endblock %}
+    <main>
+        {% block content %}
+        <!-- Content from child templates will be inserted here -->
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -50,3 +50,12 @@ input:-webkit-autofill:active {
     background-color: #d6d8db;
     border-color: #c6c8ca;
 }
+
+/* Apply the gray glow on focus */
+input:focus:not(:disabled):not(.disabled),
+select:focus:not(:disabled):not(.disabled),
+textarea:focus:not(:disabled):not(.disabled) {
+    border-color: #6c757d !important;
+    outline: none !important;
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5) !important;
+}

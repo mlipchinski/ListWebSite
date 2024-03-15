@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>User List</title>
-</head>
-
-<body>
-    <h1>User List</h1>
-    <ul>
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">User List</h1>
+    <ul class="list-group">
         {% for user in users %}
-        <li>{{ user }}</li>
+        <li class="list-group-item">{{ user }}</li>
         {% endfor %}
     </ul>
     <!-- Add your user list page content here -->
-</body>
-
-</html>
+</div>
+{% endblock %}

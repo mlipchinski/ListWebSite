@@ -1,0 +1,47 @@
+/* Link color */
+a {
+    color: #6c757d;
+}
+
+/* Link hover color */
+a:hover {
+    color: #5a6268;
+}
+
+/* Button color */
+.btn-primary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Button active and focus color */
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary.active {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    box-shadow: none;
+}
+
+/* Change the focus box shadow color */
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
+/* Change the background color of pre-filled textboxes to gray */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #d6d8db inset;
+    box-shadow: 0 0 0px 1000px #d6d8db inset;
+}
+
+/* Change the color of success messages */
+.alert-success,
+.alert-info {
+    color: #000;
+    background-color: #d6d8db;
+    border-color: #c6c8ca;
+}

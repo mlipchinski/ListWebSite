@@ -7,6 +7,36 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.contrib.auth.models import User
+from django.views.decorators.cache import never_cache
+
+
+class RegisterForm(UserCreationForm):
+    """
+    A form for creating new users. Includes all the required
+    fields, plus a repeated password.
+    """
+
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=254)
+
+    class Meta:
+        """
+        Meta class for the RegisterForm. Specifies the model to be used and
+        the fields to be included in the form.
+        """
+
+        model = User
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password1",
+            "password2",
+        )
 
 
 def user_profile(request):
@@ -33,6 +63,7 @@ def logout_view(request):
 
 
 @login_required
+@never_cache
 def home(request):
     """
     This view returns the home page. It requires the user to be logged in.
@@ -44,6 +75,9 @@ def login_view(request):
     """
     This view returns the home page. It requires the user to be logged in.
     """
+    if request.user.is_authenticated:
+        return redirect("home")
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -60,10 +94,10 @@ def login_view(request):
 
 def register(request):
     """
-    This view returns the home page. It requires the user to be logged in.
+    This view handles the registration process.
     """
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -71,5 +105,5 @@ def register(request):
         else:
             return render(request, "register.html", {"form": form})
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
         return render(request, "register.html", {"form": form})

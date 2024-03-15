@@ -8,6 +8,11 @@ a:hover {
     color: #5a6268;
 }
 
+.btn:hover {
+    background-color: #4a4a4a !important;
+    border-color: #4a4a4a !important;
+}
+
 /* Button color */
 .btn-primary {
     color: #fff;
